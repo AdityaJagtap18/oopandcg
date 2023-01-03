@@ -1,0 +1,112 @@
+#include <iostream>
+#include <graphics.h>
+#include <math.h>
+#include <dos.h>
+
+using namespace std;
+
+
+int main(){
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"");
+	int x1,x2,x3,x4,y1,y2,y3,y4,rx1,rx2,rx3,rx4,ry1,ry2,ry3,ry4,shx,shy;
+	float sx,sy,xt,yt,r;
+	char ch;
+	x1=15;
+	y1=15;
+	x2=75;
+	y2=15;
+	x3=75;
+	y3=15;
+	x4=75;
+	y4=75;
+	
+	line(x1,y1,x2,y2);
+	line(x2,y2,x3,y3);
+	line(x3,y3,x4,y4);
+	line(x4,y4,x1,y1);
+	
+	cout<<"Enter X translation value: ";
+	cin>>xt;
+	cout<<"Enter Y translation value: ";
+	cin>>yt;
+	
+	rx1=x1+xt;
+	rx2=x2+xt;
+	rx3=x3+xt;
+	rx4=x4+xt;
+	ry1=y1+yt;
+	ry2=y2+yt;
+	ry3=y3+yt;
+	ry4=y4+yt;
+	
+	line(rx1,ry1,rx2,ry2);
+	line(rx2,ry2,rx3,ry3);
+	line(rx3,ry3,rx4,ry4);
+	line(rx4,ry4,rx1,ry1);
+	
+	delay(200);
+	
+	cout<<"Enter angle of rotation\n";
+	cin>>r;
+	float t=3.15*r/180;
+	
+	rx1=abs(x1*cos(t)-y1*sin(t));
+	rx2=abs(x2*cos(t)-y2*sin(t));
+	rx3=abs(x3*cos(t)-y3*sin(t));
+	rx4=abs(x4*cos(t)-y4*sin(t));
+	ry1=abs(x1*sin(t)+y1*cos(t));
+	ry2=abs(x2*sin(t)+y2*cos(t));
+	ry3=abs(x3*sin(t)+y3*cos(t));
+	ry4=abs(x4*sin(t)+y4*cos(t));
+	
+	line(rx1,ry1,rx2,ry2);
+	line(rx2,ry2,rx3,ry3);
+	line(rx3,ry3,rx4,ry4);
+	line(rx4,ry4,rx1,ry1);
+	
+	delay(2000);
+	
+	cout<<"Scaling factor X\n";
+	cin>>sx;
+	cout<<"Scaling factor Y";
+	cin>>sy;
+	
+	rx1=x1*sx;
+	rx2=x2*sx;
+	rx3=x3*sx;
+	rx4=x4*sx;
+	ry1=y1*sy;
+	ry2=y2*sy;
+	ry3=y3*sy;
+	ry4=y4*sy;
+	
+	
+	line(rx1,ry1,rx2,ry2);
+	line(rx2,ry2,rx3,ry3);
+	line(rx3,ry3,rx4,ry4);
+	line(rx4,ry4,rx1,ry1);
+	
+	delay(2000);
+	
+	cout<<"Shear factor X";
+	cin>>shx;
+	cout<<"Shear factor Y";
+	cin>>shy;
+	
+	rx1=abs(x1+y1*shx);
+	rx2=abs(x2+y2*shx);
+	rx3=abs(x3+y3*shx);
+	rx4=abs(x4+y4*shx);
+	ry1=abs(y1+x1*shx);
+	ry2=abs(y2+x2*shx);
+	ry3=abs(y3+x3*shx);
+	ry4=abs(y4+x4*shx);
+			
+	line(rx1,ry1,rx2,ry2);
+	line(rx2,ry2,rx3,ry3);
+	line(rx3,ry3,rx4,ry4);
+	line(rx4,ry4,rx1,ry1);
+	
+	delay(2000);
+}

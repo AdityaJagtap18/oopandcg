@@ -1,0 +1,19 @@
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main(){
+	fstream file;
+	file.open("File2.txt",ios::out);
+	cout<<"File is created\n";
+	file<<"Hi-Have-Great-Time\n";
+	file.close();
+	
+	file.open("File2.txt",ios::in);
+	char ch;
+	while(!file.eof()){
+	file>>ch;
+	cout<<ch;
+}
+	file.close();
+}

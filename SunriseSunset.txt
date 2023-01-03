@@ -1,0 +1,52 @@
+#include <iostream>
+#include <graphics.h>
+#include <math.h>
+#include <dos.h>
+
+using namespace std;
+
+
+int main(){
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"");
+	int i,j;
+	int xmax,ymax;
+	
+	setbkcolor(1);
+	rectangle(0,0,getmaxx(),getmaxy());
+	outtextxy(240,250,"Enter");
+	while(!kbhit());
+	
+	for(i=50,j=0;i<250,j<250;i+=5,j+=5){
+		delay(120);
+		cleardevice();
+		if(i<150){
+			setcolor(5);
+			setfillstyle(1,5);
+			fillellipse(i,300-j,20,20);
+		}
+		else{
+			setcolor(6);
+			setfillstyle(1,6);
+			fillellipse(i,300-j,20,20);
+		}
+		delay(20);
+	}
+	cleardevice();
+	int k,l;
+	for(k=305,l=55;k<550,l<300;k+=5,l+=5){
+		delay(120);
+		cleardevice();
+		if(k<450){
+			setcolor(5);
+			setfillstyle(1,5);
+			fillellipse(k,l,20,20);
+		}
+		else{
+			setcolor(6);
+			setfillstyle(1,6);
+			fillellipse(k,l,20,20);
+		}
+		delay(20);
+	}
+}

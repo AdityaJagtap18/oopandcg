@@ -1,0 +1,112 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class studData;
+
+class stud{
+// Name, Roll number, Class, division, Date ofBirth, Blood group
+	string name;
+	int RollNumber;
+	char* cls;
+	char* div;
+	char* DateOfBirth;
+	char* BloodGroup;
+	static int count;
+	
+	public:
+		stud(){
+			name = " ";
+			RollNumber = 0;
+			cls = new char;
+			div = new char;
+			DateOfBirth = new char;
+			BloodGroup = new char;	
+			
+		}
+		~stud(){
+			delete div;
+			delete[] BloodGroup;
+		}
+		void getData(studData *);
+		void setData(studData *);
+		static int getcount(){
+			return count;
+		}
+};
+
+class studData{
+//Contact address, telephone number, driving license no
+	char* contactAddress;
+	int	tel;
+	char* dlnum;
+	friend class stud;
+	public:
+		studData(){
+		contactAddress = new char;
+		tel = 0;
+		dlnum = new char;
+		
+		}
+		~studData(){
+			delete[] dlnum;
+		}
+		
+		void setData1(){
+//			/Contact address, telephone number, driving license no
+			cout<<"Contact address: ";
+			cin>>contactAddress;
+			cout<<"Telephone Number: ";
+			cin>>tel;
+			cout<<"Driving license: ";
+			cin>>dlnum;
+		}
+		
+		void getData1(){
+			cout<<"Contact address: "<<contactAddress<<endl;
+			cout<<"Telephone Number: "<<tel<<endl;
+			cout<<"Driving license: "<<dlnum<<endl;
+		}
+};
+
+void stud::setData(studData* d){
+			cout<<"Name: ";
+			cin>>name;
+			cout<<"Roll number: ";
+			cin>>RollNumber;
+			cout<<"Class: ";
+			cin>>cls;
+			cout<<"Date of Birth: ";
+			cin>>DateOfBirth;
+			cout<<"Blood Group: ";
+			cin>>BloodGroup;
+			d->setData1();		
+}
+
+void stud::getData(studData* d){
+			cout<<"Name: "<<name<<endl;
+			cout<<"Roll number: "<<RollNumber<<endl;
+			cout<<"Class: "<<cls<<endl;
+			cout<<"Date of Birth: "<<DateOfBirth<<endl;
+			cout<<"Blood Group: "<<BloodGroup<<endl;
+			d->getData1();		
+}
+
+int main(){
+	int n = 5;
+	stud *stud1[100];
+	studData *stud2[100];
+	
+	for(int i = 0 ; i<2;i++){
+		stud1[i] = new stud;
+		stud2[i] = new studData;
+		stud1[i]->setData(stud2[i]);
+//		n+=1;
+	}
+	cout<<"Displaying ";
+	for(int i = 0 ; i<n;i++){
+		stud1[i]->getData(stud2[i]);
+//		n+=1;
+	}
+
+}
